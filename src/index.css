@@ -1,0 +1,32 @@
+/* src/index.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import "remixicon/fonts/remixicon.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply flex items-center text-white text-sm tracking-[0.2em] hover:text-[#2fbf71] transition-colors duration-300;
+  }
+
+  .nav-text {
+    @apply ml-3 font-medium text-[12px];
+  }
+
+  .profile-name {
+    @apply text-white text-base font-normal tracking-[0.2em] uppercase;
+  }
+  .hr {
+    @apply border border-gray-800;
+  }
+}
+
+/* --- The 'pulse-glow' animation has been removed as it is no longer needed. --- */
