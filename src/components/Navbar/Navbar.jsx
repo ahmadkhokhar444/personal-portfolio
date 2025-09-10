@@ -72,22 +72,30 @@ const Navbar = () => {
     <>
       {/* Hamburger Button (Mobile Only) */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md text-gray-800 dark:text-white bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md text-gray-800 dark:text-white bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm shadow-lg"
         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="Toggle menu"
       >
         {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
       </button>
 
+      {/* Overlay for mobile */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Navbar Container */}
       <div
-        className={`fixed top-0 left-0 h-full bg-slate-100 dark:bg-[#0c0c14] p-8 flex flex-col justify-between overflow-y-hidden overflow-x-hidden z-40
+        className={`fixed top-0 left-0 h-screen bg-slate-100 dark:bg-[#0c0c14] p-4 xs:p-6 flex flex-col justify-between overflow-y-auto overflow-x-hidden z-40
                    transition-transform duration-300 ease-in-out
-                   md:translate-x-0 md:w-72
+                   md:translate-x-0 md:w-64 lg:w-72 shadow-xl
                    ${
                      isMobileMenuOpen
-                       ? "translate-x-0 w-[80%]"
-                       : "-translate-x-full w-[80%]"
+                       ? "translate-x-0 w-[260px] xs:w-[280px]"
+                       : "-translate-x-full w-[260px] xs:w-[280px]"
                    }
                   `}
       >

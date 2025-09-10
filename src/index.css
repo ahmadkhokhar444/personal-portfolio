@@ -9,6 +9,72 @@
 @layer base {
   html {
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+    height: 100%; /* Ensures html always takes at least 100% of the viewport height */
+    overflow-x: hidden; /* **CRITICAL:** Prevents ANY horizontal scrollbar on the entire document */
+    overflow-y: scroll; /* **CRITICAL:** Explicitly forces html to be the ONLY vertical scroll container */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    /* IMPORTANT: body should NOT create its own scrollbars. Its content makes html scroll. */
+    overflow: hidden; /* **CRITICAL:** Prevents the body itself from generating vertical or horizontal scrollbars */
+    min-height: 100vh; /* Ensures body stretches to at least the viewport height */
+    width: 100vw; /* **CRITICAL:** Ensures body precisely fits the viewport width, preventing horizontal overflow */
+    box-sizing: border-box; /* Include padding and border in the element's total width/height calculations */
+    /* DO NOT add 'height: 100%' here if content can exceed viewport, as it would conflict with overflow: hidden */
+  }
+
+  /* Global scrollbar style */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #999999 transparent;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #999999;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #777777;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  /* Hide scrollbar for mobile */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    * {
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      scrollbar-width: none; /* For Firefox */
+    }
+  }
+
+  /* This media query is redundant if 768px covers all mobile, but kept from your original code */
+  @media (max-width: 767px) {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    * {
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      scrollbar-width: none; /* For Firefox */
+    }
   }
 }
 
@@ -28,5 +94,3 @@
     @apply border border-gray-800;
   }
 }
-
-/* --- The 'pulse-glow' animation has been removed as it is no longer needed. --- */

@@ -32,23 +32,22 @@ const About = () => {
   return (
     // Wrap the main div with motion and apply the container variants
     <motion.div
-      className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900 text-center px-6 sm:px-12 pt-20 md:pt-0"
+      className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-gray-900 text-center px-4 xs:px-6 sm:px-12 pt-24 xs:pt-20 md:pt-0"
       variants={containerVariants}
       initial="hidden"
-      // The parent 'AnimatedSection' will trigger this 'visible' state when it's in view
       whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }} // This ensures the animation can repeat
+      viewport={{ once: false, amount: 0.2 }}
     >
       <motion.h2
-        variants={itemVariants} // Apply the item animation
-        className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-16"
+        variants={itemVariants}
+        className="text-3xl xs:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-12 sm:mb-16"
       >
         About Me
       </motion.h2>
 
       <motion.h4
-        variants={itemVariants} // Apply the item animation
-        className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-6 break-words"
+        variants={itemVariants}
+        className="text-lg xs:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 xs:mb-6 break-words"
       >
         Expert Full Stack Web Developer
       </motion.h4>

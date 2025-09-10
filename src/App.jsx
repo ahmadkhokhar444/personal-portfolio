@@ -82,18 +82,18 @@ function App() {
   };
 
   return (
-    <div className="flex bg-white dark:bg-[#111827]">
+    <div className="relative min-h-screen bg-white dark:bg-[#111827] overflow-x-hidden">
       <Navbar />
 
       <button
         onClick={toggleTheme}
-        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-gray-800 shadow-lg hover:scale-110 transition-transform duration-200"
+        className="fixed top-4 right-4 z-50 p-2 xs:p-3 rounded-full bg-gray-800/80 backdrop-blur-sm shadow-lg hover:scale-110 transition-transform duration-200"
         aria-label="Toggle theme"
       >
         {theme === "light" ? <MoonIcon /> : <SunIcon />}
       </button>
 
-      <main className="ml-0 md:ml-72 w-full">
+      <main className="min-h-screen w-full transition-all duration-300 ease-in-out md:pl-64 lg:pl-72 overflow-x-hidden">
         <div id="home">
           <Home />
         </div>

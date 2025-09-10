@@ -41,46 +41,74 @@ const ContactForm = () => {
 
     try {
       const res = await fetch(
-        "http://localhost/personal-portfolio/send_email.php",
+        import.meta.env.VITE_CONTACT_FORM_URL || "/api/contact",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            // Add any additional headers your hosting provider requires
+            // "Authorization": "Bearer your-api-key", // Uncomment if needed
           },
           body: JSON.stringify({
             name: name.trim(),
             email: email.trim(),
             message: message.trim(),
+            // Add any additional fields your hosting provider requires
+            // subject: "Contact Form Submission", // Uncomment if needed
+            // website: window.location.hostname, // Uncomment if needed
           }),
         }
       );
 
-      const data = await res.json();
+      let data;
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        data = { message: await res.text() };
+      }
 
       if (res.ok) {
         setStatus(data.message || "Message sent successfully!");
         setStatusType("success");
         setFormData({ name: "", email: "", message: "" });
+
+        // Optional: Trigger analytics
+        if (typeof window !== "undefined" && window.gtag) {
+          window.gtag("event", "contact_form_submission", {
+            event_category: "engagement",
+            event_label: "success",
+          });
+        }
       } else {
-        setStatus(data.error || "Failed to send message. Please try again.");
+        const errorMessage =
+          data.error ||
+          data.message ||
+          "Failed to send message. Please try again.";
+        setStatus(errorMessage);
         setStatusType("error");
+
+        // Optional: Log error to console in development
+        if (import.meta.env.DEV) {
+          console.error("Contact form submission failed:", data);
+        }
       }
     } catch (err) {
       console.error("Contact form error:", err);
       setStatus(
-        "Network error. Please check your internet connection and try again."
+        "Unable to send message at this time. Please try again later or contact us directly."
       );
       setStatusType("error");
     }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-white dark:bg-[#0d0d0d] text-gray-900 dark:text-white">
-      <div className="w-full max-w-md bg-white dark:bg-[#1a1a1a] border border-green-500 dark:border-green-500 p-8 rounded-lg">
-        <h2 className="text-3xl font-bold text-center text-green-500 mb-6">
+    <section className="min-h-screen flex items-center justify-center px-4 xs:px-6 bg-white dark:bg-[#0d0d0d] text-gray-900 dark:text-white">
+      <div className="w-full max-w-[90%] xs:max-w-md bg-white dark:bg-[#1a1a1a] border border-green-500 dark:border-green-500 p-6 xs:p-8 rounded-lg shadow-xl">
+        <h2 className="text-2xl xs:text-3xl font-bold text-center text-green-500 mb-4 xs:mb-6">
           Contact Me
         </h2>
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <form className="space-y-4 xs:space-y-5" onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
