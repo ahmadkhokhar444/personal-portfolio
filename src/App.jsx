@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Services from "./components/Services/Services.jsx";
-import Portfolio from "./components/Portfolio/Portfolio.jsx";
+import Portfolio from "./components/Portfolio/Portfolio";
 import ContactForm from "./components/ContactForm/ContactForm.jsx";
 
 // --- REUSABLE ANIMATED SECTION COMPONENT ---

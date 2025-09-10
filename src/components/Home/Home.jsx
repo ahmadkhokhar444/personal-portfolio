@@ -21,7 +21,7 @@ const Home = () => {
 
           <h1 className="text-5xl md:text-6xl font-extrabold text-black dark:text-white">
             <span className="text-[#0b0b13] dark:text-[#fff]">
-              Syed Shah Nawaz
+              Syed Shah Nawaz{" "}
             </span>
           </h1>
 
@@ -48,7 +48,7 @@ const Home = () => {
           <div className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-green-500 flex items-center justify-center overflow-hidden shadow-lg">
             <img
               src={profilePic}
-              alt="Syed Shah Nawaz"
+              alt="Syed Shah Nawaz "
               className="w-full h-full object-cover"
             />
           </div>

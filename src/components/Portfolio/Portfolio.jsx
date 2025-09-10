@@ -3,16 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+console.log("Portfolio component loaded");
+
 // Import images properly from src/assets
 import drupal from "../../assets/drupal.png";
 import drupal2 from "../../assets/drupal(2).png";
 import webApp from "../../assets/web-app.png";
 import webApp2 from "../../assets/web-app(2).png";
+import webApp3 from "../../assets/web-app3.png"; // Added
 import ecommerce from "../../assets/ecommerce.png";
 import ecommerce2 from "../../assets/ecommerce(2).png";
 import companyWeb from "../../assets/company-web.png";
 import wordpress from "../../assets/wordpress.png";
-import shopify from "../../assets/shopify.png";
+import wordpress2 from "../../assets/wordpress2.png";
+import wordpress3 from "../../assets/wordpress3.png"; // Added
+import shopify from "../../assets/shopify.png"; // Added
 
 // --- Static Arrow Icon ---
 const RightArrowIcon = () => (
@@ -41,7 +46,7 @@ const LivePreviewButton = ({ liveLink }) => {
       href={liveLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="relative group inline-flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-800 dark:text-gray-200 mb-"
+      className="relative group inline-flex items-center gap-3 px-6 py-3 text-sm font-semibold text-gray-800 dark:text-gray-200"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
@@ -140,9 +145,30 @@ const projects = [
   },
   {
     id: 9,
-    title: "Add Brand Management",
-    image: shopify,
+    title: "Wordpress Website",
+    image: wordpress2,
     category: "Wordpress/Shopify",
+    liveLink: "https://myfloridagreen.com/",
+  },
+  {
+    id: 10,
+    title: "Wordpress Website",
+    image: wordpress3, // New Image
+    category: "Wordpress/Shopify",
+    liveLink: "https://goprowildliferemoval.com/",
+  },
+  {
+    id: 11,
+    title: "Custom Boxes Website", // Renamed title for clarity based on image
+    image: webApp3, // New Image
+    category: "Web Apps",
+    liveLink: "https://www.icustomboxes.com/",
+  },
+  {
+    id: 13,
+    title: "MAPAL Website", // Renamed title for clarity based on link
+    image: shopify, // New Image
+    category: "Company Websites",
     liveLink: "https://www.mapal.net/",
   },
 ];
@@ -160,17 +186,24 @@ const categories = [
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [showAll, setShowAll] = useState(false); // State to control showing all projects
 
   useEffect(() => {
     if (activeFilter === "All") {
       setFilteredProjects(projects);
-      return;
+    } else {
+      const newFiltered = projects.filter((project) =>
+        project.category.includes(activeFilter)
+      );
+      setFilteredProjects(newFiltered);
     }
-    const newFiltered = projects.filter((project) =>
-      project.category.includes(activeFilter)
-    );
-    setFilteredProjects(newFiltered);
+    setShowAll(false); // Reset to show only 6 when filter changes
   }, [activeFilter]);
+
+  // Determine which projects to display based on showAll state
+  const displayedProjects = showAll
+    ? filteredProjects
+    : filteredProjects.slice(0, 6);
 
   return (
     <div className="w-full box-border flex flex-col items-center justify-center bg-white dark:bg-gray-900 text-center px-6 sm:px-12 py-24 sm:py-32 overflow-hidden">
@@ -211,14 +244,14 @@ const Portfolio = () => {
 
       {/* Portfolio Grid */}
       <motion.div
-        layout
+        layout // Enables layout animations for items entering/exiting
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl"
       >
         <AnimatePresence>
-          {filteredProjects.map((project) => (
+          {displayedProjects.map((project) => (
             <motion.div
               key={project.id}
-              layout
+              layout // Animate changes in size/position
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
@@ -246,6 +279,18 @@ const Portfolio = () => {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {/* Show More / Show Less Button */}
+      {filteredProjects.length > 6 && ( // Only show button if there are more than 6 projects
+        <div className="mt-10">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-3 bg-[#2fbf71] text-white rounded-xl shadow-md hover:bg-[#28a862] transition-all duration-300"
+          >
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

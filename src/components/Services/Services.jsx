@@ -63,7 +63,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -8 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             Web Development
@@ -78,7 +78,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -8 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             UI/UX Design
@@ -91,7 +91,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -8 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             E-commerce Solutions
@@ -104,7 +104,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -8 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             SEO Optimization
@@ -118,7 +118,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -8 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             Consultation
@@ -131,7 +131,7 @@ const Services = () => {
           variants={cardItemVariants}
           whileHover={{ scale: 1.05, y: -6 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="bg-[#f9fafb] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
+          className="bg-[#f2f6fa] dark:bg-gray-900 p-8 rounded-xl shadow-lg"
         >
           <h3 className="text-xl md:text-2xl font-semibold text-[#0b0b13] dark:text-[#ffffff] mb-4">
             Maintenance & Support

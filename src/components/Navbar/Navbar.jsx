@@ -45,14 +45,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "home",
-        "about",
-        "services",
-        "portfolio",
-        "blogs",
-        "contact",
-      ];
+      const sections = ["home", "about", "services", "portfolio"];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (const section of sections) {
@@ -116,9 +109,9 @@ const Navbar = () => {
         </div>
 
         {/* Navigation Links */}
-        <nav className="mt-12">
-          <ul className="space-y-2 mb-12">
-            {["home", "about", "services", "portfolio", "contact"].map(
+        <nav className="mt-12 flex-1">
+          <ul className="space-y-2">
+            {["home", "about", "services", "portfolio"].map(
               (item, index, arr) => (
                 <React.Fragment key={item}>
                   <li>
@@ -126,11 +119,11 @@ const Navbar = () => {
                       href={`#${item}`}
                       onClick={handleLinkClick}
                       className={`nav-link flex items-center transform origin-left transition-all duration-300 ease-in-out text-gray-700 dark:text-white hover:text-[#2fbf71]
-                      ${
-                        activeSection === `#${item}`
-                          ? "!text-[#2fbf71] scale-110"
-                          : "scale-100"
-                      }`}
+                    ${
+                      activeSection === `#${item}`
+                        ? "!text-[#2fbf71] scale-110"
+                        : "scale-100"
+                    }`}
                     >
                       <i
                         className={`ri-${
@@ -139,16 +132,11 @@ const Navbar = () => {
                             about: "user-3",
                             services: "briefcase-4",
                             portfolio: "folder-2",
-                            blogs: "article",
-                            contact: "mail",
                           }[item]
                         }-line text-xl`}
                       ></i>
                       <span className="nav-text">
-                        {item
-                          .toUpperCase()
-                          .replace("ABOUT", "ABOUT ME")
-                          .replace("CONTACT", "CONTACT ME")}
+                        {item.toUpperCase().replace("ABOUT", "ABOUT ME")}
                       </span>
                     </a>
                   </li>
@@ -161,19 +149,15 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Social Links */}
-        <div className="flex space-x-4">
-          {["facebook", "twitter", "instagram", "linkedin", "pinterest"].map(
-            (social) => (
-              <a
-                key={social}
-                href="#"
-                className="text-gray-800 dark:text-white hover:text-[#2fbf71] transition-colors"
-              >
-                <i className={`ri-${social}-fill`}></i>
-              </a>
-            )
-          )}
+        {/* Contact Me Button at Bottom */}
+        <div className="mt-8">
+          <a
+            href="#contact"
+            onClick={handleLinkClick}
+            className="block w-full text-center bg-[#2fbf71] text-white py-2 px-4 rounded-xl shadow-md hover:bg-[#28a862] transition-all duration-300"
+          >
+            Contact Me
+          </a>
         </div>
       </div>
     </>
